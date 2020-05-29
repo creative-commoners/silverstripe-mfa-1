@@ -8,7 +8,7 @@ const api = (endpoint, method = 'GET', body = undefined, headers = {}) => (
     {
       body,
       credentials: 'same-origin',
-      headers,
+      headers: { Accept: 'application/json', ...headers },
       method,
     },
   )

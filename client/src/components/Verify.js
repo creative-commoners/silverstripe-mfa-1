@@ -151,16 +151,26 @@ class Verify extends Component {
             });
             return null;
           default:
+            return response.headers.get('Content-Type').includes('json') ? response.json() : response.text();
         }
-        return response.json();
       })
       .then(result => {
-        if (result) {
-          this.setState({
-            loading: false,
-            ...result,
-          });
+        let data = result;
+
+        if (typeof data === 'string') {
+          data = { message: data };
         }
+
+        this.setState({
+          loading: false,
+          ...data,
+        });
+      })
+      .catch(() => {
+        this.setState({
+          loading: false,
+          message: 'Something went wrong. Please try again.',
+        });
       });
   }
 
