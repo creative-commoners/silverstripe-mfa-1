@@ -1,6 +1,6 @@
 const Path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpackConfig = require('@silverstripe/webpack-config');
-
 const {
   resolveJS,
   externalJS,
@@ -36,7 +36,11 @@ const config = [
       'lib/Injector': 'Injector',
     },
     module: moduleJS(ENV, PATHS),
-    plugins: pluginJS(ENV, PATHS),
+    plugins: pluginJS(ENV, PATHS).concat([
+      new CopyWebpackPlugin([
+        { from: 'client/src/images', to: 'images' },
+      ])
+    ])
   },
   {
     name: 'js-cms',
