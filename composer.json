@@ -44,8 +44,7 @@
         "silverstripe/webauthn-authenticator": "<4.5.0"
     },
     "suggest": {
-        "silverstripe/totp-authenticator": "Adds a method to authenticate with you phone using a time-based one-time password.",
-        "silverstripe/webauthn-authenticator": "Adds a method to authenticate with security keys or built-in platform authenticators."
+        "silverstripe/totp-authenticator": "Adds a method to authenticate with you phone using a time-based one-time password."
     },
     "extra": {
         "expose": [
