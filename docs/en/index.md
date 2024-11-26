@@ -4,10 +4,7 @@ title: Multi-factor authentication (MFA)
 
 # Multi-factor authentication (MFA)
 
-This module provides bases classes for implementing multi-factor authentication (MFA) in Silverstripe CMS. You should also install one of the additional multi-factor authenticator modules:
-
-- [silverstripe/totp-authenticator](https://github.com/silverstripe/silverstripe-totp-authenticator)
-- [silverstripe/webauthn-authenticator](https://github.com/silverstripe/silverstripe-webauthn-authenticator)
+This module provides bases classes for implementing multi-factor authentication (MFA) in Silverstripe CMS. You should also install the [silverstripe/totp-authenticator](https://github.com/silverstripe/silverstripe-totp-authenticator) module to implement multi-factor authentication.
 
 This module provides two distinct processes for MFA; verification and registration. This module provides a decoupled
 architecture where front-end and back-end are separate. Provided with the module is a React app that interfaces with
@@ -23,7 +20,7 @@ composer require silverstripe/mfa
 
 After installing this module *and* a supported factor method module (e.g. TOTP), the default member authenticator
 will be replaced with the MFA authenticator instead. This will provide no change in the steps taken to log in until
-an MFA Method has also been configured for the site. The TOTP and WebAuthn modules will configure themselves
+an MFA Method has also been configured for the site. The TOTP modules will configure itself
 automatically.
 
 After installing the MFA module and having at least one method configured, MFA will automatically be enabled. By default
