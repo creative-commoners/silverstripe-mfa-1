@@ -491,6 +491,13 @@ class LoginHandler extends BaseLoginHandler
         }
         $request->getSession()->clear(static::SESSION_KEY . '.mustLogin');
 
+        // Deactivate sudo mode that was activated in doLogin()
+        $service = $this->getSudoModeService();
+        // Check if the service has a deactivate method, because it is not defined on the interface
+        if (method_exists($service, 'deactivate')) {
+            call_user_func([$service, 'deactivate'], $this->getRequest()->getSession());
+        }
+
         // Delegate to parent logic
         return parent::redirectAfterSuccessfulLogin();
     }
